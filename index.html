@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GymAdm - Ingreso</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="screen">
+      <header class="brand">
+        <div class="logo">GA</div>
+        <div>
+          <h1>GymAdm</h1>
+          <p>Acceso rápido para alumnos, profes y administración.</p>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>Ingresá tu DNI</h2>
+        <p class="helper">
+          Si sos profe agregá “+” al final de tu DNI. Ej: <strong>12345678+</strong>.
+        </p>
+        <form id="login-form">
+          <label for="dni">DNI</label>
+          <input id="dni" name="dni" type="text" placeholder="Tu DNI" autocomplete="off" />
+          <button type="submit">Ingresar</button>
+        </form>
+        <div class="tips">
+          <span>Demo alumno: <strong>45112233</strong></span>
+          <span>Demo profe: <strong>99887766+</strong></span>
+          <span>Demo admin: <strong>11223344</strong></span>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true">
+        <button class="close" id="close-modal" aria-label="Cerrar">×</button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
