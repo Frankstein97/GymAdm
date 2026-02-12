@@ -32,6 +32,35 @@
           <span>Demo admin: <strong>11223344</strong></span>
         </div>
       </section>
+
+      <section id="admin-menu" class="admin-menu" hidden>
+        <div class="admin-header">
+          <h2 id="admin-title">Panel administrativo</h2>
+          <p>Elegí una sección para trabajar sin salir de esta página.</p>
+        </div>
+        <div class="admin-nav" role="tablist" aria-label="Secciones admin">
+          <button type="button" class="tab-button active" data-tab="general">Dashboard general</button>
+          <button type="button" class="tab-button" data-tab="roles">Usuarios por roles</button>
+          <button type="button" class="tab-button" data-tab="calendar">Calendario</button>
+          <button type="button" class="tab-button" data-tab="classes">Clases y horarios</button>
+        </div>
+        <article class="admin-panel active" data-panel="general">
+          <h3>Dashboard general</h3>
+          <p>Resumen rápido: alumnos activos, asistencias del día y clases en curso.</p>
+        </article>
+        <article class="admin-panel" data-panel="roles">
+          <h3>Usuarios por roles</h3>
+          <p>Alta y seguimiento de alumnos, profes y administradores.</p>
+        </article>
+        <article class="admin-panel" data-panel="calendar">
+          <h3>Calendario</h3>
+          <p>Vista mensual de clases con ocupación actual y docente asignado.</p>
+        </article>
+        <article class="admin-panel" data-panel="classes">
+          <h3>Clases y horarios</h3>
+          <p>Configuración de disciplinas, cupos y franjas horarias.</p>
+        </article>
+      </section>
     </main>
 
     <div class="modal" id="modal" aria-hidden="true">

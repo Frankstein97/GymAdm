@@ -2,6 +2,10 @@ const form = document.getElementById("login-form");
 const modal = document.getElementById("modal");
 const modalBody = document.getElementById("modal-body");
 const closeModal = document.getElementById("close-modal");
+const adminMenu = document.getElementById("admin-menu");
+const adminTitle = document.getElementById("admin-title");
+const tabButtons = [...document.querySelectorAll(".tab-button")];
+const adminPanels = [...document.querySelectorAll(".admin-panel")];
 
 const users = {
   "45112233": {
@@ -38,6 +42,28 @@ const renderContent = (content) => {
 
 const normalizeInput = (value) => value.replace(/\s+/g, "").trim();
 
+const openAdminPanel = (name) => {
+  adminMenu.hidden = false;
+  adminTitle.textContent = `Panel administrativo · ${name}`;
+  adminMenu.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+const switchAdminTab = (tabName) => {
+  tabButtons.forEach((button) => {
+    button.classList.toggle("active", button.dataset.tab === tabName);
+  });
+
+  adminPanels.forEach((panel) => {
+    panel.classList.toggle("active", panel.dataset.panel === tabName);
+  });
+};
+
+tabButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    switchAdminTab(button.dataset.tab);
+  });
+});
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const rawValue = normalizeInput(form.dni.value);
@@ -67,6 +93,7 @@ form.addEventListener("submit", (event) => {
   }
 
   if (user.role === "alumno" && !isTeacher) {
+    adminMenu.hidden = true;
     renderContent(
       `
       <h3>Bienvenido, ${user.name}</h3>
@@ -78,6 +105,7 @@ form.addEventListener("submit", (event) => {
   }
 
   if (user.role === "profe" && isTeacher) {
+    adminMenu.hidden = true;
     renderContent(
       `
       <h3>Hola profe ${user.name}</h3>
@@ -91,16 +119,13 @@ form.addEventListener("submit", (event) => {
   }
 
   if (user.role === "admin" && !isTeacher) {
+    switchAdminTab("general");
+    openAdminPanel(user.name);
     renderContent(
       `
-      <h3>Panel administrativo</h3>
-      <p>Bienvenida, ${user.name}. Elegí qué querés administrar.</p>
-      <div class="actions">
-        <a href="admin-dashboard.html">Dashboard general</a>
-        <a class="secondary" href="admin-users.html">Usuarios por roles</a>
-        <a class="secondary" href="admin-calendar.html">Calendario</a>
-        <a class="secondary" href="admin-classes.html">Clases y horarios</a>
-      </div>
+      <h3>Panel administrativo activado</h3>
+      <p>Bienvenida, ${user.name}. Debajo del ingreso ya tenés el menú con:</p>
+      <p><span class="pill">Dashboard general</span> <span class="pill">Usuarios por roles</span> <span class="pill">Calendario</span> <span class="pill">Clases y horarios</span></p>
     `,
     );
     return;
