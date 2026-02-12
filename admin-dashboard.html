@@ -4,13 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dashboard general - GymAdm</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="admin.css" />
   </head>
   <body>
-    <main class="placeholder">
-      <h1>Dashboard general</h1>
-      <p>Resumen de alumnos, clases activas y métricas del día.</p>
-      <nav class="back"><a href="index.html">← Volver al ingreso</a></nav>
+    <main class="admin-page">
+      <header class="topbar">
+        <div class="brand"><div class="logo">GA</div><div><h1>GymAdm</h1><p>Acceso administración.</p></div></div>
+        <nav class="nav">
+          <a class="active" href="admin-dashboard.html">Dashboard general</a>
+          <a href="admin-users.html">Usuarios por roles</a>
+          <a href="admin-calendar.html">Calendario</a>
+          <a href="admin-classes.html">Clases y horarios</a>
+        </nav>
+        <div class="userbox"><span id="admin-user-name">Admin</span><a href="index.html" id="logout">↩</a></div>
+      </header>
+
+      <section class="dashboard-grid">
+        <div class="rooms" id="rooms-container"></div>
+        <aside class="info">
+          <div class="clock">
+            <p id="date-text">--/--/----</p>
+            <p id="time-text">--:--</p>
+            <p id="temp-text">--°</p>
+          </div>
+          <div class="total">
+            <p>TOTAL DE INGRESOS</p>
+            <strong id="total-income">0 Alumnos</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section class="attendance" id="attendance-cards"></section>
     </main>
+
+    <script src="app-data.js"></script>
+    <script src="admin-common.js"></script>
+    <script src="admin-dashboard.js"></script>
   </body>
 </html>

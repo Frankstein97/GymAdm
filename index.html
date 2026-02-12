@@ -18,9 +18,7 @@
 
       <section class="card">
         <h2>Ingresá tu DNI</h2>
-        <p class="helper">
-          Si sos profe agregá “+” al final de tu DNI. Ej: <strong>12345678+</strong>.
-        </p>
+        <p class="helper">Si sos profe agregá “+” al final de tu DNI. Ej: <strong>99887766+</strong>.</p>
         <form id="login-form">
           <label for="dni">DNI</label>
           <input id="dni" name="dni" type="text" placeholder="Tu DNI" autocomplete="off" />
@@ -34,81 +32,6 @@
       </section>
     </main>
 
-    <section class="admin-layout" id="admin-layout" hidden>
-      <header class="admin-topbar">
-        <div class="admin-brand">
-          <div class="logo">GA</div>
-          <div>
-            <h2>GymAdm</h2>
-            <p>Acceso administración.</p>
-          </div>
-        </div>
-
-        <nav class="admin-tabs" aria-label="Secciones administrativas">
-          <button class="admin-tab active">Dashboard general</button>
-          <button class="admin-tab">Usuarios por roles</button>
-          <button class="admin-tab">Calendario</button>
-          <button class="admin-tab">Clases y horarios</button>
-        </nav>
-
-        <div class="admin-userbox">
-          <span id="admin-name">Sofía García</span>
-          <button id="logout" class="logout" aria-label="Cerrar sesión">↩</button>
-        </div>
-      </header>
-
-      <div class="admin-grid">
-        <section class="timeline-wrap">
-          <article class="timeline-card">
-            <h3>salon 1</h3>
-            <div class="timeline-items">
-              <div class="slot-hour">17:00</div><div class="slot-class">PILATES MAT</div>
-              <div class="slot-hour">18:00</div><div class="slot-class">GAP</div>
-              <div class="slot-hour">19:00</div><div class="slot-class">SPORT FUNCIONAL</div>
-              <div class="slot-hour">20:00</div><div class="slot-class">CYCLE</div>
-            </div>
-          </article>
-          <article class="timeline-card">
-            <h3>salon 2</h3>
-            <div class="timeline-items">
-              <div class="slot-hour">17:00</div><div class="slot-class">PILATES MAT</div>
-              <div class="slot-hour">18:00</div><div class="slot-class">GAP</div>
-              <div class="slot-hour">19:00</div><div class="slot-class">POWER BARRE</div>
-              <div class="slot-hour">20:00</div><div class="slot-class">SPORT CYCLE</div>
-            </div>
-          </article>
-        </section>
-
-        <aside class="info-wrap">
-          <div class="clock-box">
-            <p class="date">12/02/2026</p>
-            <p class="time">Miércoles: 22:30hs</p>
-            <p class="temp">22°</p>
-          </div>
-
-          <div class="total-box">
-            <p>TOTAL DE INGRESOS</p>
-            <strong>192 Alumnos</strong>
-          </div>
-        </aside>
-      </div>
-
-      <div class="attendance-row">
-        <article class="attendance-card">
-          <p>SALON 1</p>
-          <p>CLASE GAP ACTIVA</p>
-          <strong>65 %</strong>
-          <p>DE ASISTENCIA</p>
-        </article>
-        <article class="attendance-card">
-          <p>SALON 2</p>
-          <p>CLASE SPORT FUNCION</p>
-          <strong>83 %</strong>
-          <p>DE ASISTENCIA</p>
-        </article>
-      </div>
-    </section>
-
     <div class="modal" id="modal" aria-hidden="true">
       <div class="modal-content" role="dialog" aria-modal="true">
         <button class="close" id="close-modal" aria-label="Cerrar">×</button>
@@ -116,6 +39,7 @@
       </div>
     </div>
 
+    <script src="app-data.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

@@ -4,13 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Usuarios por roles - GymAdm</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="admin.css" />
   </head>
   <body>
-    <main class="placeholder">
-      <h1>Usuarios por roles</h1>
-      <p>Acá podrás dar de alta y filtrar alumnos, profes y admins.</p>
-      <nav class="back"><a href="index.html">← Volver al ingreso</a></nav>
+    <main class="admin-page">
+      <header class="topbar">
+        <div class="brand"><div class="logo">GA</div><div><h1>GymAdm</h1><p>Acceso administración.</p></div></div>
+        <nav class="nav">
+          <a href="admin-dashboard.html">Dashboard general</a>
+          <a class="active" href="admin-users.html">Usuarios por roles</a>
+          <a href="admin-calendar.html">Calendario</a>
+          <a href="admin-classes.html">Clases y horarios</a>
+        </nav>
+        <div class="userbox"><span id="admin-user-name">Admin</span><a href="index.html" id="logout">↩</a></div>
+      </header>
+      <section class="content-card">
+        <h2>Lista de usuarios (mock)</h2>
+        <table class="table" id="users-table">
+          <thead><tr><th>DNI</th><th>Nombre</th><th>Rol</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
     </main>
+    <script src="app-data.js"></script>
+    <script src="admin-common.js"></script>
+    <script src="admin-users.js"></script>
   </body>
 </html>

@@ -4,13 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Clases y horarios - GymAdm</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="admin.css" />
   </head>
   <body>
-    <main class="placeholder">
-      <h1>Gestión de clases</h1>
-      <p>Configuración de disciplinas, horarios y cupos máximos.</p>
-      <nav class="back"><a href="index.html">← Volver al ingreso</a></nav>
+    <main class="admin-page">
+      <header class="topbar">
+        <div class="brand"><div class="logo">GA</div><div><h1>GymAdm</h1><p>Acceso administración.</p></div></div>
+        <nav class="nav">
+          <a href="admin-dashboard.html">Dashboard general</a>
+          <a href="admin-users.html">Usuarios por roles</a>
+          <a href="admin-calendar.html">Calendario</a>
+          <a class="active" href="admin-classes.html">Clases y horarios</a>
+        </nav>
+        <div class="userbox"><span id="admin-user-name">Admin</span><a href="index.html" id="logout">↩</a></div>
+      </header>
+      <section class="content-card">
+        <h2>Gestión de clases (mock)</h2>
+        <table class="table" id="classes-table">
+          <thead><tr><th>Clase</th><th>Salón</th><th>Cupos</th><th>Asistentes</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
     </main>
+    <script src="app-data.js"></script>
+    <script src="admin-common.js"></script>
+    <script src="admin-classes.js"></script>
   </body>
 </html>
