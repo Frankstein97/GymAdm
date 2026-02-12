@@ -20,7 +20,7 @@ export default function LoginPage() {
   const [open, setOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
   const closeTimer = useRef(null);
-  const { loginAdmin } = useApp();
+  const { loginAdmin, resetDemoData } = useApp();
   const navigate = useNavigate();
 
   useEffect(() => () => {
@@ -40,13 +40,14 @@ export default function LoginPage() {
     }
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const raw = dni.replace(/\s+/g, '').trim();
+  const authenticate = (rawValue) => {
+    const raw = rawValue.replace(/\s+/g, '').trim();
     if (!raw) return showMessage('Necesitamos tu DNI');
+
     const isTeacher = raw.endsWith('+');
     const clean = raw.replace('+', '');
     const user = usersByDni[clean];
+
     if (!user) return showMessage('No encontramos ese usuario');
 
     if (user.role === 'admin' && !isTeacher) {
@@ -68,9 +69,24 @@ export default function LoginPage() {
     showMessage('Ingreso no válido para ese rol.');
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    authenticate(dni);
+  };
+
+  const quickLogin = (dniValue) => {
+    setDni(dniValue);
+    authenticate(dniValue);
+  };
+
   return (
     <main className="screen">
-      <header className="brand"><div className="logo">GA</div><div><h1>GymAdm</h1><p>Acceso rápido para alumnos, profes y administración.</p></div></header>
+      <header className="brand">
+        <div className="logo">GA</div>
+        <div><h1>GymAdm</h1><p>Acceso rápido para alumnos, profes y administración.</p></div>
+        <span className="demo-badge">Demo local</span>
+      </header>
+
       <section className="card">
         <h2>Ingresá tu DNI</h2>
         <p className="helper">Si sos profe agregá “+” al final de tu DNI. Ej: <strong>99887766+</strong>.</p>
@@ -82,6 +98,14 @@ export default function LoginPage() {
             <button type="button" className="help-button" onClick={() => setDemoOpen(true)} title="Usuarios de ejemplo">?</button>
           </div>
         </form>
+
+        <div className="quick-login-row">
+          <button type="button" onClick={() => quickLogin('11223344')}>Probar como Admin</button>
+          <button type="button" onClick={() => quickLogin('99887766+')}>Probar como Profe</button>
+          <button type="button" onClick={() => quickLogin('45112233')}>Probar como Alumno</button>
+        </div>
+
+        <button type="button" className="ghost" onClick={resetDemoData}>Reset demo data</button>
       </section>
 
       <div className={`modal ${open ? 'open' : ''}`} onClick={() => setOpen(false)}>
