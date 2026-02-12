@@ -1,14 +1,15 @@
 :root {
   color-scheme: light;
   font-family: "Inter", "Segoe UI", system-ui, sans-serif;
-  --bg: #f3f5f9;
+  --bg: #dfe1e6;
   --card: #ffffff;
-  --primary: #1b6ef3;
-  --primary-dark: #1352b5;
-  --text: #1c2430;
-  --muted: #6b778c;
-  --accent: #f1f5ff;
-  --shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+  --primary: #0f83ff;
+  --primary-dark: #0b66c7;
+  --text: #111827;
+  --muted: #6b7280;
+  --dark-block: #253036;
+  --yellow: #f7c100;
+  --soft-gray: #b8b8bb;
 }
 
 * {
@@ -42,7 +43,7 @@ body {
   width: 52px;
   height: 52px;
   border-radius: 16px;
-  background: linear-gradient(130deg, #1b6ef3, #47d0ff);
+  background: linear-gradient(130deg, #1b6ef3, #0bb9ff);
   color: white;
   display: grid;
   place-items: center;
@@ -52,29 +53,23 @@ body {
 
 .brand h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 34px;
 }
 
 .brand p {
   margin: 4px 0 0;
   color: var(--muted);
-}
-
-.card,
-.admin-menu {
-  width: min(900px, 100%);
-  padding: 28px;
-  background: var(--card);
-  border-radius: 24px;
-  box-shadow: var(--shadow);
+  font-size: 18px;
 }
 
 .card {
   width: min(420px, 100%);
+  padding: 28px;
+  background: var(--card);
+  border-radius: 24px;
 }
 
-.card h2,
-.admin-menu h2 {
+.card h2 {
   margin-top: 0;
   margin-bottom: 8px;
 }
@@ -115,7 +110,6 @@ button {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease;
 }
 
 button:hover {
@@ -130,46 +124,208 @@ button:hover {
   color: var(--muted);
 }
 
-.admin-header p {
-  margin-top: 0;
-  color: var(--muted);
+.admin-layout {
+  min-height: 100vh;
+  padding: 16px;
 }
 
-.admin-nav {
+.admin-topbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.admin-brand {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
-  margin-top: 16px;
+  align-items: center;
 }
 
-.tab-button {
-  background: #e7edfa;
-  color: #173263;
+.admin-brand .logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  font-size: 12px;
 }
 
-.tab-button.active {
+.admin-brand h2 {
+  margin: 0;
+  font-size: 36px;
+}
+
+.admin-brand p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 20px;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  background: #eceef2;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.admin-tab {
+  background: #d9dfe8;
+  color: #0f2f5c;
+  border-radius: 12px;
+  font-size: 28px;
+  padding: 10px 18px;
+}
+
+.admin-tab.active {
   background: var(--primary);
   color: white;
 }
 
-.admin-panel {
+.admin-userbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-userbox span {
+  font-size: 34px;
+  background: #eceef2;
+  padding: 12px 20px;
+  border-radius: 6px;
+}
+
+.logout {
+  width: 58px;
+  height: 58px;
+  border-radius: 6px;
+  background: #eceef2;
+  color: #111;
+  font-size: 28px;
+  padding: 0;
+}
+
+.admin-grid {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 36px;
+}
+
+.timeline-wrap {
+  display: flex;
+  gap: 28px;
+}
+
+.timeline-card {
+  background: #ececec;
+  width: 220px;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.timeline-card h3 {
+  margin: 0 0 10px auto;
+  width: fit-content;
+  background: #344148;
+  color: #fff;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 30px;
+  text-transform: lowercase;
+}
+
+.timeline-items {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 8px;
+}
+
+.slot-hour {
+  background: var(--dark-block);
+  color: #fff;
+  border-radius: 8px;
+  min-height: 68px;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+}
+
+.slot-class {
+  background: var(--yellow);
+  color: #2f2c23;
+  border-radius: 8px;
+  min-height: 68px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.1;
+  padding: 6px;
+}
+
+.info-wrap {
+  display: grid;
+  gap: 36px;
+  align-content: start;
+}
+
+.clock-box {
+  text-align: right;
+  font-size: 70px;
+  line-height: 1.05;
+}
+
+.clock-box p {
+  margin: 0;
+}
+
+.total-box {
   margin-top: 20px;
-  border: 1px solid #e3e8f1;
-  border-radius: 16px;
-  padding: 20px;
-  display: none;
+  background: var(--soft-gray);
+  color: #f3f4f6;
+  border-radius: 34px;
+  padding: 22px;
+  text-align: center;
 }
 
-.admin-panel.active {
-  display: block;
+.total-box p {
+  margin: 0;
+  font-size: 52px;
 }
 
-.admin-panel h3 {
-  margin-top: 0;
+.total-box strong {
+  font-size: 52px;
+  font-weight: 500;
 }
 
-.admin-panel p {
-  color: var(--muted);
+.attendance-row {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.attendance-card {
+  background: var(--soft-gray);
+  color: #f2f3f5;
+  border-radius: 34px;
+  text-align: center;
+  padding: 18px 18px 26px;
+}
+
+.attendance-card p {
+  margin: 4px 0;
+  font-size: 50px;
+}
+
+.attendance-card strong {
+  font-size: 160px;
+  font-weight: 500;
+  line-height: 1;
 }
 
 .modal {
@@ -195,7 +351,6 @@ button:hover {
   background: var(--card);
   border-radius: 24px;
   padding: 28px;
-  box-shadow: var(--shadow);
   position: relative;
 }
 
@@ -217,13 +372,10 @@ button:hover {
 .modal-content .pill {
   padding: 6px 12px;
   border-radius: 999px;
-  background: var(--accent);
+  background: #e8eefc;
   color: var(--primary);
   font-size: 12px;
   font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
 }
 
 .modal-content a {
@@ -233,13 +385,6 @@ button:hover {
   padding: 10px 14px;
   border-radius: 10px;
   font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.modal-content a.secondary {
-  background: #0f172a;
 }
 
 .close {
@@ -258,20 +403,32 @@ button:hover {
   padding: 40px 16px;
 }
 
-.placeholder h1 {
-  margin-bottom: 8px;
-}
-
 .placeholder p {
   color: var(--muted);
 }
 
-nav.back {
-  margin-top: 24px;
-}
+@media (max-width: 1300px) {
+  .admin-topbar {
+    grid-template-columns: 1fr;
+  }
 
-nav.back a {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
+  .admin-grid,
+  .attendance-row {
+    grid-template-columns: 1fr;
+  }
+
+  .clock-box {
+    text-align: left;
+    font-size: 46px;
+  }
+
+  .total-box p,
+  .total-box strong,
+  .attendance-card p {
+    font-size: 32px;
+  }
+
+  .attendance-card strong {
+    font-size: 90px;
+  }
 }

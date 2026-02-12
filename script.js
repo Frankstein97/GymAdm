@@ -2,10 +2,10 @@ const form = document.getElementById("login-form");
 const modal = document.getElementById("modal");
 const modalBody = document.getElementById("modal-body");
 const closeModal = document.getElementById("close-modal");
-const adminMenu = document.getElementById("admin-menu");
-const adminTitle = document.getElementById("admin-title");
-const tabButtons = [...document.querySelectorAll(".tab-button")];
-const adminPanels = [...document.querySelectorAll(".admin-panel")];
+const loginScreen = document.getElementById("login-screen");
+const adminLayout = document.getElementById("admin-layout");
+const adminName = document.getElementById("admin-name");
+const logoutButton = document.getElementById("logout");
 
 const users = {
   "45112233": {
@@ -42,27 +42,18 @@ const renderContent = (content) => {
 
 const normalizeInput = (value) => value.replace(/\s+/g, "").trim();
 
-const openAdminPanel = (name) => {
-  adminMenu.hidden = false;
-  adminTitle.textContent = `Panel administrativo · ${name}`;
-  adminMenu.scrollIntoView({ behavior: "smooth", block: "start" });
+const showAdminLayout = (name) => {
+  adminName.textContent = name;
+  loginScreen.hidden = true;
+  adminLayout.hidden = false;
 };
 
-const switchAdminTab = (tabName) => {
-  tabButtons.forEach((button) => {
-    button.classList.toggle("active", button.dataset.tab === tabName);
-  });
-
-  adminPanels.forEach((panel) => {
-    panel.classList.toggle("active", panel.dataset.panel === tabName);
-  });
+const showLoginScreen = () => {
+  adminLayout.hidden = true;
+  loginScreen.hidden = false;
+  form.reset();
+  form.dni.focus();
 };
-
-tabButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    switchAdminTab(button.dataset.tab);
-  });
-});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -93,7 +84,6 @@ form.addEventListener("submit", (event) => {
   }
 
   if (user.role === "alumno" && !isTeacher) {
-    adminMenu.hidden = true;
     renderContent(
       `
       <h3>Bienvenido, ${user.name}</h3>
@@ -105,7 +95,6 @@ form.addEventListener("submit", (event) => {
   }
 
   if (user.role === "profe" && isTeacher) {
-    adminMenu.hidden = true;
     renderContent(
       `
       <h3>Hola profe ${user.name}</h3>
@@ -119,15 +108,7 @@ form.addEventListener("submit", (event) => {
   }
 
   if (user.role === "admin" && !isTeacher) {
-    switchAdminTab("general");
-    openAdminPanel(user.name);
-    renderContent(
-      `
-      <h3>Panel administrativo activado</h3>
-      <p>Bienvenida, ${user.name}. Debajo del ingreso ya tenés el menú con:</p>
-      <p><span class="pill">Dashboard general</span> <span class="pill">Usuarios por roles</span> <span class="pill">Calendario</span> <span class="pill">Clases y horarios</span></p>
-    `,
-    );
+    showAdminLayout(user.name);
     return;
   }
 
@@ -139,6 +120,7 @@ form.addEventListener("submit", (event) => {
   );
 });
 
+logoutButton.addEventListener("click", showLoginScreen);
 closeModal.addEventListener("click", hideModal);
 
 modal.addEventListener("click", (event) => {
