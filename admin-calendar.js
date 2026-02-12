@@ -1,14 +1,30 @@
-const calendarBody = document.querySelector("#calendar-table tbody");
-const logoutCalendar = document.getElementById("logout");
+const weeklyCalendar = document.getElementById("weekly-calendar");
+const classesByRoom = window.GymData.storage.loadClasses();
 
-Object.entries(window.GymData.calendarByRoom).forEach(([room, classes]) => {
-  classes.forEach((entry) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${room}</td><td>${entry.hour}:00</td><td>${entry.className}</td><td>${entry.coach}</td>`;
-    calendarBody.append(tr);
+const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+
+const buildDayCard = (day) => {
+  const card = document.createElement("article");
+  card.className = "day-card";
+  card.innerHTML = `<h3>${day}</h3><div class="day-content"></div>`;
+  const content = card.querySelector(".day-content");
+
+  Object.entries(classesByRoom).forEach(([room, classes]) => {
+    const roomBlock = document.createElement("div");
+    roomBlock.className = "room-chip-wrap";
+    roomBlock.innerHTML = `<strong>${room}</strong>`;
+
+    classes.slice(0, 8).forEach((entry) => {
+      const chip = document.createElement("span");
+      chip.className = "chip";
+      chip.textContent = `${String(entry.hour).padStart(2, "0")}:00 ${entry.className}`;
+      roomBlock.append(chip);
+    });
+
+    content.append(roomBlock);
   });
-});
 
-logoutCalendar.addEventListener("click", () => {
-  sessionStorage.removeItem("gymadm-session");
-});
+  return card;
+};
+
+days.forEach((day) => weeklyCalendar.append(buildDayCard(day)));
