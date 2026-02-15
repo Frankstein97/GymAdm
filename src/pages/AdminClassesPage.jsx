@@ -3,7 +3,7 @@ import AdminLayout from '../components/AdminLayout';
 import { useApp } from '../context';
 
 const classesToCsv = (classesByRoom) => {
-  const rows = [['salon', 'hora', 'clase', 'profe', 'cupos']];
+  const rows = [['Salon', 'hora', 'clase', 'profe', 'cupos']];
   Object.entries(classesByRoom).forEach(([room, list]) => {
     list.forEach((entry) => rows.push([room, `${entry.hour}:00`, entry.className, entry.coach, entry.capacity]));
   });

@@ -84,28 +84,28 @@ export default function LoginPage() {
       <header className="brand">
         <div className="logo">GA</div>
         <div><h1>GymAdm</h1><p>Acceso rápido para alumnos, profes y administración.</p></div>
-        <span className="demo-badge">Demo local</span>
+        <span className="demo-badge">Esta es una DEMO</span>
       </header>
 
       <section className="card">
-        <h2>Ingresá tu DNI</h2>
-        <p className="helper">Si sos profe agregá “+” al final de tu DNI. Ej: <strong>99887766+</strong>.</p>
+        <h2> INGRESA TU DNI</h2>
         <form onSubmit={onSubmit}>
-          <label>DNI</label>
-          <input value={dni} onChange={(e) => setDni(e.target.value)} placeholder="Tu DNI" />
+          <input value={dni} onChange={(e) => setDni(e.target.value)} placeholder="Número de Documento" />
           <div className="login-actions">
             <button type="submit">Ingresar</button>
-            <button type="button" className="help-button" onClick={() => setDemoOpen(true)} title="Usuarios de ejemplo">?</button>
           </div>
         </form>
 
         <div className="quick-login-row">
-          <button type="button" onClick={() => quickLogin('11223344')}>Probar como Admin</button>
-          <button type="button" onClick={() => quickLogin('99887766+')}>Probar como Profe</button>
-          <button type="button" onClick={() => quickLogin('45112233')}>Probar como Alumno</button>
+          <button type="button" onClick={() => quickLogin('11223344')}>TEST USER: Admin</button>
+          <button type="button" onClick={() => quickLogin('99887766+')}>TEST USER: Profes</button>
+          <button type="button" onClick={() => quickLogin('45112233')}>TEST USER: Alumnos</button>
+        
+          <button type="button" className="ghost" onClick={resetDemoData}>RESET DEMO DATA</button>
+
+          
         </div>
 
-        <button type="button" className="ghost" onClick={resetDemoData}>Reset demo data</button>
       </section>
 
       <div className={`modal ${open ? 'open' : ''}`} onClick={() => setOpen(false)}>

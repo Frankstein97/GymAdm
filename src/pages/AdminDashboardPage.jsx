@@ -61,10 +61,10 @@ export default function AdminDashboardPage() {
         <aside className="info">
           <div className="clock">
             <p>{new Intl.DateTimeFormat('es-AR', { dateStyle: 'short' }).format(now)}</p>
-            <p>{new Intl.DateTimeFormat('es-AR', { weekday: 'long', hour: '2-digit', minute: '2-digit', hour12: false }).format(now)}hs</p>
+            <p>{new Intl.DateTimeFormat('es-AR', { weekday: 'long', hour: '2-digit', minute: '2-digit', hour12: false }).format(now).toUpperCase()}hs</p>
             <p>{temp}</p>
           </div>
-          <div className="total"><p>TOTAL DE INGRESOS</p><strong>{getUniqueDailyIncome(now)} Usuarios</strong></div>
+          <div className="total"><p>TOTAL DE INGRESOS HOY:</p><strong>{getUniqueDailyIncome(now)} Usuarios</strong></div>
         </aside>
       </section>
 
@@ -78,7 +78,7 @@ export default function AdminDashboardPage() {
       </section>
 
       <section className="content-card">
-        <h2>Concurrencia diaria (mock)</h2>
+        <h2>Concurrencia diaria: (DEMO)</h2>
         <div className="bar-chart">
           {dailySeries.map((item) => (
             <div className="bar-item" key={item.hour}>
