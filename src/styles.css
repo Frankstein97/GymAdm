@@ -257,18 +257,17 @@ button.ghost {
 }
 .room h3 {
   margin: 0 0 10px auto;
-  background: #36434c;
-  color: #fff;
+  color: #000000;
   border-radius: 8px;
   padding: 4px 10px;
   width: max-content;
 }
 .timeline {
+  padding: 15px 0px 15px 0px;
   display: grid;
   gap: 7px;
   max-height: 420px;
   overflow-y: auto;
-  padding-right: 4px;
 }
 .timeline-row {
   display: grid;
