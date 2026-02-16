@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Clases y horarios - GymAdm</title><link rel="stylesheet" href="admin.css" /></head>
+  <body>
+    <main class="admin-page">
+      <header class="topbar">
+        <div class="brand"><div class="logo">GA</div><div><h1>GymAdm</h1><p>Acceso administración.</p></div></div>
+        <button class="hamburger" id="hamburger">☰</button>
+        <div class="menu-panel" id="menu-panel"><nav class="nav"><a href="admin-dashboard.html">Dashboard general</a><a href="admin-users.html">Usuarios por roles</a><a href="admin-calendar.html">Calendario</a><a class="active" href="admin-classes.html">Clases y horarios</a></nav><div class="userbox"><span id="admin-user-name">Admin</span><a href="index.html" id="logout">↩</a></div></div>
+      </header>
+      <section class="content-card">
+        <h2>Clases y horarios (CRUD local)</h2>
+        <form id="class-form" class="inline-form">
+          <select id="class-room"><option>Salon 1</option><option>Salon 2</option></select>
+          <input id="class-hour" type="number" min="0" max="23" placeholder="Hora (0-23)" required />
+          <input id="class-name" placeholder="Clase" required />
+          <input id="class-coach" placeholder="Profe" required />
+          <input id="class-capacity" type="number" min="5" placeholder="Cupos" required />
+          <button type="submit">Guardar</button>
+        </form>
+        <table class="table" id="classes-table"><thead><tr><th>Salón</th><th>Hora</th><th>Clase</th><th>Profe</th><th>Cupos</th><th>Acciones</th></tr></thead><tbody></tbody></table>
+      </section>
+    </main>
+    <script src="app-data.js"></script><script src="admin-common.js"></script><script src="admin-classes.js"></script>
+  </body>
+</html>
